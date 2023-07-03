@@ -2,24 +2,19 @@ package sg.edu.rp.c346.id21038060.musiclibrary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     Button btnAdd;
-    ListView lvSongs;
-    ArrayList<Song> data;
+    Button btnView;
     EditText etSongTitle;
     EditText etSingers;
     EditText etYear;
@@ -32,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnAdd = findViewById(R.id.btnAdd);
-        lvSongs = findViewById(R.id.lvSongs);
+        btnView = findViewById(R.id.btnView);
         etSongTitle = findViewById(R.id.etSongTitle);
         etSingers = findViewById(R.id.etSingers);
         etYear = findViewById(R.id.etYear);
@@ -42,13 +37,6 @@ public class MainActivity extends AppCompatActivity {
         rbtn3 = findViewById(R.id.rbtn3);
         rbtn4 = findViewById(R.id.rbtn4);
         rbtn5 = findViewById(R.id.rbtn5);
-
-        // Populate database contents to ListView
-        DBHelper db = new DBHelper(MainActivity.this);
-        data = db.getSongs();
-
-        ArrayAdapter aaSong = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
-        lvSongs.setAdapter(aaSong);
 
         btnAdd.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -85,10 +73,14 @@ public class MainActivity extends AppCompatActivity {
                 etSingers.setText("");
                 etYear.setText("");
                 rgStars.clearCheck();
-                data.clear();
-                data.addAll(db.getSongs());
-                aaSong.notifyDataSetChanged();
                 Toast.makeText(MainActivity.this, "Song added successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
     }

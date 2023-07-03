@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
     //Start version with 1
     //increment by 1 whenever db schema changes.
-    private static final int DATABASE_VER = 1;
+    private static final int DATABASE_VER = 2;
     private static final String DATABASE_NAME = "Song.db";
 
     private static final String TABLE_SONG = "Song";
@@ -66,50 +66,16 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    //Get Database Content via ArrayList directly
-    public ArrayList<String> getSongContent() {
-        // Create an ArrayList that holds String objects
-        ArrayList<String> songs = new ArrayList<String>();
-        // Get the instance of database to read
-        SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGERS, COLUMN_YEAR, COLUMN_STARS};
-        // Run the query and get back the Cursor object
-        Cursor cursor = db.query(TABLE_SONG, columns, null, null, null, null, null, null);
-
-        // moveToFirst() moves to first row, null if no records
-        if (cursor.moveToFirst()) {
-            // Loop while moveToNext() points to next row
-            //  and returns true; moveToNext() returns false
-            //  when no more next row to move to
-            do {
-                // Add the song content to the ArrayList object
-                //  getString(0) retrieves first column data
-                //  getString(1) return second column data
-                //  getInt(0) if data is an integer value
-                //songs.add(cursor.getString(0));
-                songs.add(cursor.getString(1));
-                songs.add(cursor.getString(2));
-                songs.add(cursor.getString(3));
-                songs.add(cursor.getString(4));
-            } while (cursor.moveToNext());
-        }
-        // Close connection
-        cursor.close();
-        db.close();
-
-        return songs;
-    }
-
     //Get Database Content via Song object
     public ArrayList<Song> getSongs() {
-        ArrayList<Song> songs = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGERS, COLUMN_YEAR, COLUMN_STARS};
         Cursor cursor = db.query(TABLE_SONG, columns, null, null, null, null, COLUMN_TITLE+" ASC", null);
 
         if (cursor.moveToFirst()) {
             do {
-                //int id = cursor.getInt(0);
+                int id = cursor.getInt(0);
                 String description = cursor.getString(1);
                 String date = cursor.getString(2);
                 int year = cursor.getInt(3);
