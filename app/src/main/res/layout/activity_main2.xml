@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity2">
 
+    <Button
+        android:id="@+id/btnFiveStars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SHOW ALL SONGS WITH 5 STARS" />
+
     <ListView
         android:id="@+id/lvSongs"
         android:layout_width="match_parent"

@@ -25,6 +25,11 @@ public class Song {
     @NonNull
     @Override
     public String toString() {
-        return title + "\n" + singers + "\n" + year + "\n" + stars;
+        String strstars = "";
+        for(int i = 0; i < stars; i++){
+            strstars = strstars + "*";
+        }
+
+        return title + "\n" + singers + " - " + year + "\n" + strstars;
     }
 }

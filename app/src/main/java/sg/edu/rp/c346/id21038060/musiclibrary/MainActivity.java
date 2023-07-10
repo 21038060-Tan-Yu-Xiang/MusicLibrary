@@ -26,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAdd = findViewById(R.id.btnAdd);
-        btnView = findViewById(R.id.btnView);
+        getSupportActionBar().setTitle("Add New NDP Song");
+
+        btnAdd = findViewById(R.id.btnUpdate);
+        btnView = findViewById(R.id.btnDelete);
         etSongTitle = findViewById(R.id.etSongTitle);
         etSingers = findViewById(R.id.etSingers);
         etYear = findViewById(R.id.etYear);

@@ -5,7 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity3">
+
+    <TextView
+        android:id="@+id/tvSongId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Song ID" />
+
+    <EditText
+        android:id="@+id/etSongId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/tvSongTitle"
@@ -18,7 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="@string/enter_song_title_here"
         android:inputType="text" />
 
     <TextView
@@ -32,7 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="@string/enter_singer_s_name_here"
         android:inputType="text" />
 
     <TextView
@@ -46,7 +58,6 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="@string/enter_year_of_release_here"
         android:inputType="number" />
 
     <TextView
@@ -108,15 +119,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/add_new_song" />
+            android:text="UPDATE" />
 
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/view_song_list" />
+            android:text="DELETE" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CANCEL" />
 
 </LinearLayout>
