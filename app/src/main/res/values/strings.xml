@@ -2,7 +2,7 @@
     <string name="app_name">MusicLibrary</string>
     <string name="song_title">Song Title</string>
     <string name="enter_song_title_here">Enter song title here...</string>
-    <string name="singers">Singers</string>
+    <string name="singers">Singer</string>
     <string name="enter_singer_s_name_here">Enter singer\'s name here...</string>
     <string name="year">Year</string>
     <string name="enter_year_of_release_here">Enter year of release here...</string>

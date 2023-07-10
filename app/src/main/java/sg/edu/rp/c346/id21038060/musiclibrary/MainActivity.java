@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 etSingers.setText("");
                 etYear.setText("");
                 rgStars.clearCheck();
+
                 Toast.makeText(MainActivity.this, "Song added successfully", Toast.LENGTH_SHORT).show();
             }
         });

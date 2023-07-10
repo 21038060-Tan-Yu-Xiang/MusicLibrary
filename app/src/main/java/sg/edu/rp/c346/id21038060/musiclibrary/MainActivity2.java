@@ -18,7 +18,15 @@ public class MainActivity2 extends AppCompatActivity {
     ListView lvSongs;
     ArrayList<Song> al;
     ArrayAdapter<Song> aa;
-    DBHelper db;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DBHelper db = new DBHelper(MainActivity2.this);
+        al.clear();
+        al.addAll(db.getSongs());
+        aa.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +63,9 @@ public class MainActivity2 extends AppCompatActivity {
         btnFiveStars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                al.clear();
+                al.addAll(db.getAllSongsFilterByStars(5));
+                aa.notifyDataSetChanged();
             }
         });
     }
