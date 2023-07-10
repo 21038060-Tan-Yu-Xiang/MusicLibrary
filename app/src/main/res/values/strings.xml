@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">MusicLibrary</string>
     <string name="song_title">Song Title</string>
-    <string name="enter_song_title_here">Enter song title here...</string>
+    <string name="enter_song_title_here">Enter song title here…</string>
     <string name="singers">Singer</string>
-    <string name="enter_singer_s_name_here">Enter singer\'s name here...</string>
+    <string name="enter_singer_s_name_here">Enter singer\'s name here…</string>
     <string name="year">Year</string>
-    <string name="enter_year_of_release_here">Enter year of release here...</string>
+    <string name="enter_year_of_release_here">Enter year of release here…</string>
     <string name="stars">Stars</string>
     <string name="_1">1</string>
     <string name="_5">5</string>
@@ -14,4 +14,12 @@
     <string name="_3">3</string>
     <string name="add_new_song">Add New Song</string>
     <string name="view_song_list">View Song List</string>
+    <string name="show_all_songs_with_5_stars">SHOW ALL SONGS WITH 5 STARS</string>
+    <string-array name="spinnerItems">
+        <item>All Years</item>
+        <item>2002</item>
+        <item>2005</item>
+        <item>2010</item>
+        <item>2015</item>
+    </string-array>
 </resources>

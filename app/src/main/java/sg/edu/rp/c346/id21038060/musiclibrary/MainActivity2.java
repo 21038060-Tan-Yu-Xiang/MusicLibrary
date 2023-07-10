@@ -9,15 +9,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
     Button btnFiveStars;
+    Spinner spnYear;
     ListView lvSongs;
     ArrayList<Song> al;
     ArrayAdapter<Song> aa;
+
+    Boolean ignoreCallback = false;
 
     @Override
     protected void onResume() {
@@ -36,10 +40,11 @@ public class MainActivity2 extends AppCompatActivity {
         getSupportActionBar().setTitle("NDP Songs List");
 
         btnFiveStars = findViewById(R.id.btnFiveStars);
+        spnYear = findViewById(R.id.spnYear);
         lvSongs = findViewById(R.id.lvSongs);
 
-        al = new ArrayList<Song>();
-        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
+        al = new ArrayList<>();
+        aa = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
         lvSongs.setAdapter(aa);
 
         DBHelper db = new DBHelper(MainActivity2.this);
@@ -63,9 +68,33 @@ public class MainActivity2 extends AppCompatActivity {
         btnFiveStars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ignoreCallback = true;
+                spnYear.setSelection(0);
+                ignoreCallback = false;
                 al.clear();
                 al.addAll(db.getAllSongsFilterByStars(5));
                 aa.notifyDataSetChanged();
+            }
+        });
+
+        spnYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (!ignoreCallback) {
+                    if (i == 0) { //All Years
+                        onResume();
+                    } else {
+                        al.clear();
+                        al.addAll(db.getAllSongsFilterByYear(Integer.parseInt(spnYear.getSelectedItem().toString())));
+                        aa.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
