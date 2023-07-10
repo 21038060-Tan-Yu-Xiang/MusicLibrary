@@ -31,15 +31,14 @@ public class MainActivity2 extends AppCompatActivity {
         lvSongs = findViewById(R.id.lvSongs);
 
         al = new ArrayList<Song>();
-        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_expandable_list_item_1, al);
+        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
         lvSongs.setAdapter(aa);
 
-        // Populate database contents to ListView
-        db = new DBHelper(MainActivity2.this);
-        al = db.getSongs();
+        DBHelper db = new DBHelper(MainActivity2.this);
 
-        ArrayAdapter aaSong = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
-        lvSongs.setAdapter(aaSong);
+        al.clear();
+        al.addAll(db.getSongs());
+        aa.notifyDataSetChanged();
 
         lvSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,10 +51,6 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        al.clear();
-        al.addAll(db.getSongs());
-        aaSong.notifyDataSetChanged();
 
         btnFiveStars.setOnClickListener(new View.OnClickListener() {
             @Override
