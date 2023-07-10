@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,7 +16,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     Button btnFiveStars;
     ListView lvSongs;
-    ArrayList<Song> data;
+    ArrayList<Song> al;
+    ArrayAdapter<Song> aa;
     DBHelper db;
 
     @Override
@@ -28,15 +30,31 @@ public class MainActivity2 extends AppCompatActivity {
         btnFiveStars = findViewById(R.id.btnFiveStars);
         lvSongs = findViewById(R.id.lvSongs);
 
+        al = new ArrayList<Song>();
+        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_expandable_list_item_1, al);
+        lvSongs.setAdapter(aa);
+
         // Populate database contents to ListView
         db = new DBHelper(MainActivity2.this);
-        data = db.getSongs();
+        al = db.getSongs();
 
-        ArrayAdapter aaSong = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
+        ArrayAdapter aaSong = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
         lvSongs.setAdapter(aaSong);
 
-        data.clear();
-        data.addAll(db.getSongs());
+        lvSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int
+                    position, long identity) {
+                Song data = al.get(position);
+                Intent i = new Intent(MainActivity2.this,
+                        MainActivity3.class);
+                i.putExtra("data", data);
+                startActivity(i);
+            }
+        });
+
+        al.clear();
+        al.addAll(db.getSongs());
         aaSong.notifyDataSetChanged();
 
         btnFiveStars.setOnClickListener(new View.OnClickListener() {

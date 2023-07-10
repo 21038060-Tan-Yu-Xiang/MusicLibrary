@@ -2,7 +2,9 @@ package sg.edu.rp.c346.id21038060.musiclibrary;
 
 import androidx.annotation.NonNull;
 
-public class Song {
+import java.io.Serializable;
+
+public class Song implements Serializable {
     private int id;
     private String title;
     private String singers;

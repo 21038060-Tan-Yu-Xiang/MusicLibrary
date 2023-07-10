@@ -40,15 +40,13 @@ public class MainActivity extends AppCompatActivity {
         rbtn4 = findViewById(R.id.rbtn4);
         rbtn5 = findViewById(R.id.rbtn5);
 
+        // Create the DBHelper object, passing in the activity's Context
+        DBHelper db = new DBHelper(MainActivity.this);
+
+        // Insert a song
         btnAdd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                // Create the DBHelper object, passing in the
-                // activity's Context
-                DBHelper db = new DBHelper(MainActivity.this);
-
-                // Insert a song
-
                 // Get selected radio button from radioGroup
                 int selectedId = rgStars.getCheckedRadioButtonId();
                 int stars = 0;
