@@ -19,8 +19,8 @@ public class MainActivity2 extends AppCompatActivity {
     Spinner spnYear;
     ListView lvSongs;
     ArrayList<Song> al;
-    ArrayAdapter<Song> aa;
-
+    //ArrayAdapter<Song> aa;
+    CustomAdapter adapter;
     Boolean ignoreCallback = false;
 
     @Override
@@ -29,7 +29,8 @@ public class MainActivity2 extends AppCompatActivity {
         DBHelper db = new DBHelper(MainActivity2.this);
         al.clear();
         al.addAll(db.getSongs());
-        aa.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
+        //aa.notifyDataSetChanged();
     }
 
     @Override
@@ -44,14 +45,17 @@ public class MainActivity2 extends AppCompatActivity {
         lvSongs = findViewById(R.id.lvSongs);
 
         al = new ArrayList<>();
-        aa = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
-        lvSongs.setAdapter(aa);
+        adapter = new CustomAdapter(this, R.layout.row, al);
+        lvSongs.setAdapter(adapter);
+        //aa = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
+        //lvSongs.setAdapter(aa);
 
         DBHelper db = new DBHelper(MainActivity2.this);
 
         al.clear();
         al.addAll(db.getSongs());
-        aa.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
+        //aa.notifyDataSetChanged();
 
         lvSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,7 +77,8 @@ public class MainActivity2 extends AppCompatActivity {
                 ignoreCallback = false;
                 al.clear();
                 al.addAll(db.getAllSongsFilterByStars(5));
-                aa.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
+                //aa.notifyDataSetChanged();
             }
         });
 
@@ -87,7 +92,8 @@ public class MainActivity2 extends AppCompatActivity {
                     } else {
                         al.clear();
                         al.addAll(db.getAllSongsFilterByYear(Integer.parseInt(spnYear.getSelectedItem().toString())));
-                        aa.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
+                        //aa.notifyDataSetChanged();
                     }
                 }
             }
