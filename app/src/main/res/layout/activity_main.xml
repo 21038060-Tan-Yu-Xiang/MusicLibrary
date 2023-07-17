@@ -4,57 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg3"
+    android:background="@drawable/bg"
     android:orientation="vertical"
+    android:padding="50dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvSongTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/song_title" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvSongTitle"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/song_title" />-->
 
     <EditText
         android:id="@+id/etSongTitle"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
+        android:drawableLeft="@drawable/music"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="@string/enter_song_title_here"
         android:inputType="text" />
 
-    <TextView
-        android:id="@+id/tvSingers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/singers" />
-
     <EditText
         android:id="@+id/etSingers"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
+        android:drawableLeft="@drawable/microphone"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="@string/enter_singer_s_name_here"
         android:inputType="text" />
 
-    <TextView
-        android:id="@+id/tvYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/year" />
-
     <EditText
         android:id="@+id/etYear"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
+        android:drawableLeft="@drawable/calendar"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="@string/enter_year_of_release_here"
         android:inputType="number" />
-
-    <TextView
-        android:id="@+id/tvStars"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stars" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,34 +56,46 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="32dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/star" />
+
             <RadioButton
                 android:id="@+id/rbtn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
                 android:text="@string/_1" />
 
             <RadioButton
                 android:id="@+id/rbtn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
                 android:text="@string/_2" />
 
             <RadioButton
                 android:id="@+id/rbtn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
                 android:text="@string/_3" />
 
             <RadioButton
                 android:id="@+id/rbtn4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
                 android:text="@string/_4" />
 
             <RadioButton
                 android:id="@+id/rbtn5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
                 android:text="@string/_5" />
         </RadioGroup>
     </LinearLayout>
@@ -109,6 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#CFC7C2"
             android:text="@string/add_new_song" />
 
         <Button
@@ -116,8 +118,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#CFC7C2"
             android:text="@string/view_song_list" />
 
     </LinearLayout>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvSingers"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/singers" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvYear"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/year" />-->
 
 </LinearLayout>

@@ -92,6 +92,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public int updateNote(Song data){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        
         values.put(COLUMN_TITLE, data.getTitle());
         values.put(COLUMN_SINGERS, data.getSingers());
         values.put(COLUMN_YEAR, data.getYear());
